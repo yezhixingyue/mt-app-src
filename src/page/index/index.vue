@@ -1,0 +1,286 @@
+<template>
+  <div class="page-index">
+    <el-row>
+      <el-col :span="5">
+        <m-menu />
+      </el-col>
+      <el-col :span="19">
+        <life />
+      </el-col>
+    </el-row>
+    <container :bool='true' :listData="styleData" />
+    <container :bool='false' :listData="youhuiData" />
+    <container :bool='false' :listData="movieData" />
+    <container :bool='false' :listData="minsuData" />
+  </div>
+</template>
+
+<script>
+import MMenu from './menu.vue'
+import Life from './life.vue'
+import Container from './Container.vue'
+export default {
+    data(){
+      return {
+        index:true,
+        styleData:{
+          type:'all',
+          class:'m-istyle',
+          tag:{
+            title:'有格调',
+            tagList:['全部','约会聚餐','丽人SPA','电影演出','品质出游'],
+            classList:['all','food','spa','movie','travel']
+          },
+          list:{}
+        },
+        youhuiData:{
+          type:'all',
+          class:'m-youhui',
+          tag:{
+            title:'狠优惠',
+            tagList:['全部','美食','休闲']
+          },
+          list:[{
+            image:'https://p1.meituan.net/dpmerchantpic/99eba05e19624a5010b609df283932d9121284.jpg@213w_120h_1e_1c',
+            title:'外教中国英语外教(海淀校区)',
+            sub_title:'[万柳]北美外教1对1线下课到店有礼',
+            price_info:{
+              current_price:1,
+              old_price:'门市价89900',
+              avg_price:0,
+              unit:null
+            },
+            saleNum:2
+          },{
+            image:'https://p1.meituan.net/deal/4e21c090fe27e8a460e739d3e2674cd11229337.png@0_0_1080_810a%7C388h_640w_2e_90Q%7C213w_120h_1e_1c',
+            title:'八斗餐厅',
+            sub_title:'晚市单人自助套餐',
+            price_info:{
+              current_price:1,
+              old_price:'美团价￥88',
+              avg_price:null,
+              unit:null
+            },
+            saleNum:95
+          },{
+            image:'https://p0.meituan.net/wedding/310567fa0ea9bb17af982ac290298846509939.jpg@213w_120h_1e_1c',
+            title:'中艺理想家装饰·专注老房装修',
+            sub_title:'晚市单人自助套餐',
+            price_info:{
+              current_price:9.9,
+              old_price:'门市价￥5000',
+              avg_price:0,
+              unit:null
+            },
+            saleNum:22
+          },{
+            image:'https://p1.meituan.net/deal/3938a20bbcb18f7b5c132945a156d86235822.jpg@0_7_440_266a%7C388h_640w_2e_100Q%7C213w_120h_1e_1c',
+            title:'黄门老灶火锅',
+            sub_title:'晚市单人自助套餐',
+            price_info:{
+              current_price:1,
+              old_price:'美团价￥58',
+              avg_price:0,
+              unit:null
+            },
+            saleNum:223
+          },{
+            image:'https://p1.meituan.net/poi/69a8fd4950e96c4728dfe9f585bdf19b60121.jpg@213w_120h_1e_1c',
+            title:'魔影国际影城（金源店）',
+            sub_title:'晚市单人自助套餐',
+            price_info:{
+              current_price:38,
+              old_price:'门市价180',
+              avg_price:0,
+              unit:null
+            },
+            saleNum:'2.3万'
+          },{
+            image:'https://p1.meituan.net/dpmerchantpic/d5fdc02472306ebd20e2a40600be9acc247728.jpg@213w_120h_1e_1c',
+            title:'韩国格乐利雅GALLERIA海岛婚礼堂(丰台店)',
+            sub_title:'晚市单人自助套餐',
+            price_info:{
+              current_price:1,
+              old_price:'门市价29800',
+              avg_price:0,
+              unit:null
+            },
+            saleNum:16
+          },{
+            image:'https://p0.meituan.net/deal/570d3ccc2657c668f406baa5a49e3a9d105160.jpg@0_144_2000_1212a%7C388h_640w_2e_90Q%7C213w_120h_1e_1c',
+            title:'DQ',
+            sub_title:'晚市单人自助套餐',
+            price_info:{
+              current_price:1,
+              old_price:'美团价50',
+              avg_price:0,
+              unit:null
+            },
+            saleNum:'1.0万'
+          },{
+            image:'https://p0.meituan.net/dpmerchantpic/5292ecc6037def9591d4cce3d9b7df42149977.jpg@213w_120h_1e_1c',
+            title:'闪亮银河少儿艺术中心',
+            sub_title:'晚市单人自助套餐',
+            price_info:{
+              current_price:1,
+              old_price:'门市价23000',
+              avg_price:0,
+              unit:null
+            },
+            saleNum:223
+          },{
+            image:'https://p1.meituan.net/dpmerchantpic/106ed08a826cf99997bd8a1d06aa68551168070.jpg@213w_120h_1e_1c',
+            title:'PS-ONE（北京）品思国际艺术留学',
+            sub_title:'晚市单人自助套餐',
+            price_info:{
+              current_price:2.1,
+              old_price:'门市价1000',
+              avg_price:0,
+              unit:null
+            },
+            saleNum:'2.3万'
+          },{
+            image:'https://p1.meituan.net/wedding/ffb136a661cbdd6111a7b0d9f35270fa97034.jpg@213w_120h_1e_1c',
+            title:'玛玛洛可少儿英语周庄嘉园中心（铭泽生活广场店）',
+            sub_title:'[十里河]英语测评+DEMO课程学习+精美玩偶',
+            price_info:{
+              current_price:1,
+              old_price:'门市价14590',
+              avg_price:0,
+              unit:null
+            },
+            saleNum:16
+          }]
+        },
+        movieData:{
+          type:'all',
+          class:'m-movie',
+          tag:{
+            title:'猫眼电源',
+            tagList:['全部','正在热映','即将上映']
+          },
+          list:[{
+            image:'//p0.meituan.net/movie/cddf92d0ac6a0db837a1bc488b241c42267927.jpg@214w_297h_1e_1c',
+            title:'观众评',
+            sub_title:'中国机长',
+            grade:9.6
+          },{
+            image:'https://p0.meituan.net/moviemachine/b2c5c74d33e45745fd3462e44b3698e18336620.jpg@214w_297h_1e_1c',
+            title:'观众评',
+            sub_title:'中国机长',
+            grade:9.6
+          },{
+            image:'https://p1.meituan.net/movie/4c01895cfd53e82f7c3048c407974a6b4739229.jpg@214w_297h_1e_1c',
+            title:'观众评',
+            sub_title:'中国机长',
+            grade:9.6
+          },{
+            image:'https://p1.meituan.net/movie/6392cd350d00860921042cdac7f2ed797389667.jpg@214w_297h_1e_1c',
+            title:'观众评',
+            sub_title:'中国机长',
+            grade:9.6
+          },{
+            image:'https://p0.meituan.net/movie/c437c3e340eff266f5cc7dcc79bead6b2406517.jpg@214w_297h_1e_1c',
+            title:'观众评',
+            sub_title:'中国机长',
+            grade:9.6
+          }]
+        },
+        minsuData: {
+          type:'all',
+          class:'m-minsu',
+          tag:{
+            title:'推荐民宿',
+            tagList:['天津','济南','大连','太原','石家庄','秦皇岛','呼和浩特','潍坊','唐山','泰安']
+          },
+          list:[{
+            image:'https://img.meituan.net/phoenix/e3802bceb439e2e8b258375d11ff6c431100264.jpg@740w_416h_1e_1c',
+            title:'临近内大·创业 可做饭 俯瞰小黑河夜景的落地窗公寓',
+            sub_title:'天使秘密1个，约2磅，圆形',
+            price_info:{
+              current_price:129,
+              old_price:'门市价268',
+              avg_price:0,
+              unit:null
+            },
+            address:'朝阳门'
+          },{
+            image:'http://p0.meituan.net/iphoenix/421953ab1582c55d020a38458cbf5c0a2658106.jpg@740w_416h_1e_1c',
+            title:'【丰宿】凯德mall高级公寓，清新北欧，近地铁口，中国连锁民宿的一股清流',
+            sub_title:'晚市单人自助套餐',
+            price_info:{
+              current_price:null,
+              old_price:null,
+              avg_price:188,
+              unit:'人均'
+            },
+            address:'王府井/东单'
+          },{
+            image:'http://p1.meituan.net/iphoenix/cf639aad1ca0d51f73c720975e352d5f88894.jpg@740w_416h_1e_1c',
+            title:'繁华商圈，闹中取静，豪华大床',
+            sub_title:'晚市单人自助套餐',
+            price_info:{
+              current_price:'抢光了',
+              old_price:null,
+              avg_price:0,
+              unit:null
+            },
+            address:'王府井/东单'
+          },{
+            image:'https://img.meituan.net/phoenix/3a7c4997a150c24b6132fb6f15106652384386.jpg@740w_416h_1e_1c',
+            title:'[蓝色港湾]Loft民宿，智能家电，巨幕投影',
+            sub_title:'晚市单人自助套餐',
+            price_info:{
+              current_price:298,
+              old_price:'门市价330',
+              avg_price:0,
+              unit:null
+            },
+            address:'王府井/东单'
+          },{
+            image:'https://img.meituan.net/phoenix/ce6a0fc83ea8a6f1ada0784249385808424030.jpg@740w_416h_1e_1c',
+            title:'【芒果社区：暖暖的幸福】17/内大南校区/创业学院/南湖湿地/美通/恒盛广场/长租超优惠',
+            sub_title:'晚市单人自助套餐',
+            price_info:{
+              current_price:138,
+              old_price:'门市价188',
+              avg_price:0,
+              unit:null
+            },
+            address:'王府井/东单'
+          },{
+            image:'https://img.meituan.net/phoenix/97112df79ef9b1b3a53a659c37bdee8e359061.jpg@740w_416h_1e_1c',
+            title:'【芒果社区：浪漫满屋】06/内大南校区/创业学院/南湖湿地/美通/恒盛广场/长租超优惠',
+            sub_title:'晚市单人自助套餐',
+            price_info:{
+              current_price:158,
+              old_price:'门市价230',
+              avg_price:0,
+              unit:null
+            },
+            address:'王府井/东单'
+          }]
+        },
+        true:true,
+        false:false
+
+      }
+    },
+    components:{
+        MMenu,
+        Life,
+        Container
+    },
+    mounted () {
+      this.api.getStyleData().then(res => {
+        this.styleData.list = res.data.data
+        console.log(this.styleData.list)
+        console.log(res)
+      })
+    }
+}
+</script>
+
+<style lang='scss'>
+  @import "@/assets/css/index/index.scss";
+</style>
